@@ -28,22 +28,23 @@ export default function Navbar() {
         {/* Icons */}
         <div className="flex items-center space-x-4">
           <Link href="#" className="relative flex items-center gap-1">
-            <div className="rounded-full bg-[#F8FEE5] p-1.5 sm:p-2 flex items-center gap-1">
+            <div className="rounded-full bg-svg-bg p-1.5 sm:p-2 flex items-center gap-1">
               <img
                 src="/assets/shoppingbag.svg"
                 className="w-5 h-5"
+                alt="shoppingbag"
               />
             </div>
             <p className="hidden md:block text-sm">Cart(1)</p>
           </Link>
           <Link href="#">
-            <div className="rounded-full bg-[#F8FEE5] p-1.5 sm:p-2">
-              <img src="/assets/heart.svg" className="w-5 h-5" />
+            <div className="rounded-full bg-svg-bg p-1.5 sm:p-2">
+              <img src="/assets/heart.svg" className="w-5 h-5" alt="heart" />
             </div>
           </Link>
           <Link href="#">
-            <div className="rounded-full bg-[#F8FEE5] p-1.5 sm:p-2">
-              <img src="/assets/user.svg" className="w-5 h-5" />
+            <div className="rounded-full bg-svg-bg p-1.5 sm:p-2">
+              <img src="/assets/user.svg" className="w-5 h-5" alt="user" />
             </div>
           </Link>
         </div>

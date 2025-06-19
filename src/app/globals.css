@@ -4,8 +4,15 @@ body {
   background-color: #eff5e1;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 @theme {
   --breakpoint-xs: 30rem; /* 480px*/
   --breakpoint-xxs: 26.25rem; /* 420px*/
-  --text-clamp: clamp(3.5rem, 18vw, 18rem);
+  --color-svg-bg: #f8fee4;
+  --color-primary: #eff5e1;
+  --color-secondary: #2d3b36;
+  --color-main: #fefff4;
 }
