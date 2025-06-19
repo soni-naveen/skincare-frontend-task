@@ -6,5 +6,6 @@ body {
 
 @theme {
   --breakpoint-xs: 30rem; /* 480px*/
-  --breakpoint-xxs: 22rem; /* 352px*/
+  --breakpoint-xxs: 26.25rem; /* 420px*/
+  --text-clamp: clamp(3.5rem, 18vw, 18rem);
 }
