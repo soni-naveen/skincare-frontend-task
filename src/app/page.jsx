@@ -5,14 +5,14 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Image from "next/image";
 import DetailCard from "./components/DetailCard";
+import TextReveal from "./components/TextReveal";
 
 export default function page() {
   const [loading, setLoading] = useState(false);
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    setLoading(false);
-    // setLoading(true);
+    setLoading(true);
     setTimeout(() => {
       setLoading(false);
     }, 2500);
@@ -45,7 +45,7 @@ export default function page() {
     <>
       {loading ? (
         <div className="flex items-end justify-end h-[calc(100vh-10px)]">
-          <span className="text-6xl xs:text-7xl text-[#26322C] mr-10 xs:mr-16 mb-5 xs:mb-10 font-medium">
+          <span className="text-7xl xs:text-8xl text-[#26322C] mr-10 xs:mr-16 mb-5 xs:mb-10 font-medium">
             {count}
           </span>
         </div>
@@ -122,10 +122,15 @@ export default function page() {
           </section>
           <section className="bg-main">
             <div className="flex justify-center py-10 xs:hidden">
-              <button className="xs:hidden bg-secondary px-7 py-2 rounded-full text-primary font-light text-xs w-fit">
+              <button className="xs:hidden bg-secondary px-10 py-3 rounded-full text-primary font-light text-sm w-fit">
                 Shop Now
               </button>
             </div>
+            <TextReveal
+              text={
+                "Experience the ultimate in skincare with our expertly formulated products, crafted to nourish, protect, and rejuvenate your skin. Combining the finest natural ingredients with advanced science, our collection ensures every skin type can achieve a radiant, healthy glow. Embrace your beauty with confidence every day. Experience the ultimate in skincare with our expertly formulated products, crafted to nourish, protect, and rejuvenate your skin."
+              }
+            />
             <div>
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cumque
               praesentium sequi voluptatem, facilis provident corrupti nostrum
