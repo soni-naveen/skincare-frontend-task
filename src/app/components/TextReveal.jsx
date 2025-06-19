@@ -36,7 +36,7 @@ const TextScrollReveal = ({ text }) => {
   return (
     <div
       ref={ref}
-      className="text-secondary text-xl sm:text-2xl md:text-3xl lg:text-4xl leading-snug pb-5 xs:py-16 md:py-20 px-[5%]"
+      className="text-secondary text-xl sm:text-2xl md:text-3xl lg:text-4xl leading-snug pb-16 xs:py-16 md:py-20 px-[5%]"
     >
       {words.map((word, i) => (
         <RevealWord
