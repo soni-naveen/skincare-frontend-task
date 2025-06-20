@@ -38,7 +38,8 @@ export default function page() {
     return () => clearInterval(timer);
   }, []);
 
-  const slideRef = useRef(null);
+  const slideRef1 = useRef(null);
+  const slideRef2 = useRef(null);
 
   const items = [
     {
@@ -316,7 +317,7 @@ export default function page() {
                 </div>
                 <div className="hidden lg:flex gap-12">
                   <button
-                    onClick={() => slideRef.current?.slidePrev()}
+                    onClick={() => slideRef1.current?.slidePrev()}
                     className="cursor-pointer"
                   >
                     <img
@@ -326,7 +327,7 @@ export default function page() {
                     />
                   </button>
                   <button
-                    onClick={() => slideRef.current?.slideNext()}
+                    onClick={() => slideRef1.current?.slideNext()}
                     className="cursor-pointer"
                   >
                     <img
@@ -340,7 +341,7 @@ export default function page() {
               <div className="px-10 lg:px-5 py-16">
                 <Swiper
                   onSwiper={(swiper) => {
-                    slideRef.current = swiper;
+                    slideRef1.current = swiper;
                   }}
                   className="max-w-[1350px] mx-auto"
                   breakpoints={{
@@ -373,7 +374,7 @@ export default function page() {
               </div>
               <div className="lg:hidden flex justify-center gap-10">
                 <button
-                  onClick={() => slideRef.current?.slidePrev()}
+                  onClick={() => slideRef1.current?.slidePrev()}
                   className="cursor-pointer"
                 >
                   <img
@@ -383,7 +384,7 @@ export default function page() {
                   />
                 </button>
                 <button
-                  onClick={() => slideRef.current?.slideNext()}
+                  onClick={() => slideRef1.current?.slideNext()}
                   className="cursor-pointer"
                 >
                   <img
@@ -446,7 +447,7 @@ export default function page() {
               <div className="lg:hidden px-10 lg:px-5 py-16">
                 <Swiper
                   onSwiper={(swiper) => {
-                    slideRef.current = swiper;
+                    slideRef2.current = swiper;
                   }}
                   className="max-w-[1350px] mx-auto"
                   breakpoints={{
@@ -479,7 +480,7 @@ export default function page() {
               </div>
               <div className="lg:hidden flex justify-center gap-10">
                 <button
-                  onClick={() => slideRef.current?.slidePrev()}
+                  onClick={() => slideRef2.current?.slidePrev()}
                   className="cursor-pointer"
                 >
                   <img
@@ -489,7 +490,7 @@ export default function page() {
                   />
                 </button>
                 <button
-                  onClick={() => slideRef.current?.slideNext()}
+                  onClick={() => slideRef2.current?.slideNext()}
                   className="cursor-pointer"
                 >
                   <img
