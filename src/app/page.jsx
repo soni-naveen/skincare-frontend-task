@@ -190,7 +190,7 @@ export default function page() {
                     priority={true}
                     className="w-screen xs:w-[300px] sm:w-[320px] md:w-[350px] lg:w-[400px] xl:w-[450px] h-[400px] xs:h-[350px] sm:h-[400px] lg:h-[450px] xl:h-[500px] md:rounded-2xl object-cover"
                   />
-                  <div className="absolute bottom-3 lg:bottom-5 left-1/2 -translate-x-1/2">
+                  <div className="absolute bottom-5 left-1/2 -translate-x-1/2">
                     <DetailCard
                       text={
                         "While giving you an invigorating cleansing experience."
@@ -425,7 +425,7 @@ export default function page() {
                   Feel Beautiful Inside and Out with Every Product.
                 </div>
               </div>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-5 place-items-center max-w-sm xs:max-w-md md:max-w-6xl mx-auto px-5 xs:px-10">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-5 place-items-center max-w-sm xs:max-w-md md:max-w-6xl lg:max-w-5xl mx-auto px-5 xs:px-10">
                 <button className="flex items-center justify-center bg-secondary px-6 lg:px-8 py-2.5 lg:py-3 rounded-full text-main text-xs xs:text-sm lg:text-base w-36 xs:w-40 lg:w-52">
                   NEW ARRIVAL
                 </button>
@@ -503,14 +503,14 @@ export default function page() {
             </section>
             {/* FAQ Section  */}
             <section className="pt-20 pb-10 lg:py-20 flex items-center flex-col-reverse gap-10 lg:gap-0 lg:flex-row lg:px-6 xl:px-0 justify-around w-full">
-              <div className="relative w-screen lg:w-[500px] xl:w-[600px] h-[700px]">
+              <div className="relative w-screen lg:w-[460px] xl:w-[600px] h-[600px] sm:h-[700px]">
                 <Image
                   src="/assets/img5.jpg"
                   alt="skincare"
                   height={700}
                   width={600}
                   priority={true}
-                  className="w-screen lg:w-[500px] xl:w-[600px] h-[700px] lg:rounded-2xl object-cover"
+                  className="w-screen lg:w-[460px] xl:w-[600px] h-[600px] sm:h-[700px] lg:rounded-2xl object-cover"
                 />
                 <div className="absolute bottom-12 left-1/2 -translate-x-1/2">
                   <DetailCard
@@ -524,7 +524,7 @@ export default function page() {
                 <div>
                   <DotButton text={"Frequently Asked Question"} />
                 </div>
-                <p className="text-3xl sm:text-4xl pt-10 lg:pt-16 max-w-md">
+                <p className="text-3xl md:text-4xl xl:text-5xl pt-10 lg:pt-16 max-w-2xl lg:max-w-md xl:max-w-xl leading-tight">
                   Answers to Your Skincare Questions, All in One Place.
                 </p>
 
@@ -561,7 +561,7 @@ export default function page() {
                               : "mt-4 max-h-[200px]"
                           }`}
                         >
-                          <p>{item.Answer}</p>
+                          <p className="text-xs xl:text-sm">{item.Answer}</p>
                         </div>
                       </div>
                     );
