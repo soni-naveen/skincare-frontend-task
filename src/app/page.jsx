@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Image from "next/image";
@@ -8,6 +8,8 @@ import DetailCard from "./components/DetailCard";
 import TextReveal from "./components/TextReveal";
 import DotButton from "./components/DotButton";
 import ItemCard from "./components/ItemCard";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 
 export default function page() {
   const [loading, setLoading] = useState(false);
@@ -15,7 +17,7 @@ export default function page() {
 
   // Loader
   useEffect(() => {
-    setLoading(true);
+    // setLoading(true);
     setTimeout(() => {
       setLoading(false);
     }, 2500);
@@ -34,24 +36,48 @@ export default function page() {
     return () => clearInterval(timer);
   }, []);
 
-  const [index, setIndex] = useState(0);
-  const visibleCount = 3;
-
-  const handlePrev = () => {
-    setIndex((prev) => Math.max(prev - 1, 0));
-  };
-
-  const handleNext = () => {
-    setIndex((prev) => Math.min(prev + 1, items.length - visibleCount));
-  };
+  const slideRef = useRef(null);
 
   const items = [
-    { name: "ALYA SKIN CLEANSER", price: "29.99", img: "/assets/img6.jpg" },
-    { name: "RITUAL OF SAKURA", price: "27.99", img: "/assets/img3.jpg" },
-    { name: "THE BODY LOTION.", price: "19.99", img: "/assets/img5.jpg" },
-    { name: "ALYA SKIN CLEANSER", price: "29.99", img: "/assets/img6.jpg" },
-    { name: "RITUAL OF SAKURA", price: "27.99", img: "/assets/img3.jpg" },
+    {
+      id: 1,
+      name: "ALYA SKIN CLEANSER",
+      price: "29.99",
+      img: "/assets/img6.jpg",
+    },
+    {
+      id: 2,
+      name: "RITUAL OF SAKURA",
+      price: "27.99",
+      img: "/assets/img3.jpg",
+    },
+    {
+      id: 3,
+      name: "THE BODY LOTION.",
+      price: "19.99",
+      img: "/assets/img5.jpg",
+    },
+    {
+      id: 4,
+      name: "ALYA SKIN CLEANSER",
+      price: "29.99",
+      img: "/assets/img6.jpg",
+    },
+    {
+      id: 5,
+      name: "RITUAL OF SAKURA",
+      price: "27.99",
+      img: "/assets/img3.jpg",
+    },
   ];
+
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  if (!isClient) return null;
 
   return (
     <>
@@ -245,23 +271,29 @@ export default function page() {
               </div>
             </section>
             {/* Best Selling Products  */}
-            <section className="py-20 lg:py-10">
-              <div className="flex flex-col gap-10 px-6 sm:pl-10 lg:px-0 lg:gap-0 lg:flex-row justify-around lg:items-center">
+            <section className="pt-20 pb-10 lg:py-10">
+              <div className="flex flex-col gap-10 px-6 sm:pl-10 lg:px-0 lg:gap-0 lg:flex-row justify-around lg:items-center max-w-[1600px] mx-auto">
                 <div>
                   <DotButton text={"Best Selling Products"} />
                 </div>
                 <div className="text-3xl sm:text-4xl max-w-md lg:text-center">
                   Skincare That Brings Out Your Natural Radiance
                 </div>
-                <div className="hidden lg:flex gap-10">
-                  <button onClick={handlePrev} className="cursor-pointer">
+                <div className="hidden lg:flex gap-12">
+                  <button
+                    onClick={() => slideRef.current?.slidePrev()}
+                    className="cursor-pointer"
+                  >
                     <img
                       src="/assets/leftarrow.svg"
                       alt="left"
                       className="w-12 h-12"
                     />
                   </button>
-                  <button onClick={handleNext} className="cursor-pointer">
+                  <button
+                    onClick={() => slideRef.current?.slideNext()}
+                    className="cursor-pointer"
+                  >
                     <img
                       src="/assets/rightarrow.svg"
                       alt="right"
@@ -270,36 +302,84 @@ export default function page() {
                   </button>
                 </div>
               </div>
-              <div className="overflow-hidden pl-6 py-14 lg:py-20 max-w-[1350px] mx-auto">
-                <div
-                  className="flex gap-6 transition-transform duration-500"
-                  style={{
-                    transform: `translateX(-${index * (100 / visibleCount)}%)`,
-                    // width: `${(items.length / visibleCount) * 100}%`,
+              <div className="px-10 lg:px-5 py-16">
+                <Swiper
+                  onSwiper={(swiper) => {
+                    slideRef.current = swiper;
+                  }}
+                  className="max-w-[1350px] mx-auto"
+                  breakpoints={{
+                    640: {
+                      slidesPerView: 1,
+                      spaceBetween: 20,
+                    },
+                    768: {
+                      slidesPerView: 2,
+                      spaceBetween: 30,
+                    },
+                    1024: {
+                      slidesPerView: 3,
+                      spaceBetween: 25,
+                    },
+                    1280: {
+                      slidesPerView: 3,
+                      spaceBetween: 20,
+                    },
                   }}
                 >
-                  {items.map((item, idx) => (
-                    <div key={idx} className="shrink-0">
-                      <ItemCard {...item} />
-                    </div>
-                  ))}
-                </div>
+                  {items.map((item) => {
+                    return (
+                      <SwiperSlide>
+                        <ItemCard key={item.id} item={item} />
+                      </SwiperSlide>
+                    );
+                  })}
+                </Swiper>
               </div>
               <div className="lg:hidden flex justify-center gap-10">
-                <button onClick={handlePrev} className="cursor-pointer">
+                <button
+                  onClick={() => slideRef.current?.slidePrev()}
+                  className="cursor-pointer"
+                >
                   <img
                     src="/assets/leftarrow.svg"
                     alt="left"
                     className="w-12 h-12"
                   />
                 </button>
-                <button onClick={handleNext} className="cursor-pointer">
+                <button
+                  onClick={() => slideRef.current?.slideNext()}
+                  className="cursor-pointer"
+                >
                   <img
                     src="/assets/rightarrow.svg"
                     alt="right"
                     className="w-12 h-12"
                   />
                 </button>
+              </div>
+            </section>
+            {/* Big Poster  */}
+            <section className="py-20">
+              <div className="relative w-screen lg:w-[95%] mx-auto">
+                <Image
+                  src="/assets/img7.jpg"
+                  alt="skincare"
+                  height={700}
+                  width={600}
+                  priority={true}
+                  className="w-screen lg:w-[95%] mx-auto h-[700px] lg:rounded-3xl object-cover"
+                />
+                <div className="absolute inset-0 w-screen lg:w-[95%] mx-auto lg:rounded-3xl bg-gradient-to-t from-[#000000] to-transparent opacity-60 pointer-events-none" />
+
+                <div className="absolute bottom-12 left-1/2 -translate-x-1/2 w-[90%] lg:max-w-4xl flex flex-col justify-center items-center gap-8">
+                  <p className="text-main text-2xl xs:text-3xl sm:text-4xl md:text-5xl text-center leading-tight">
+                    Feel Beautiful Inside and Out with Every Product.
+                  </p>
+                  <button className="flex items-center justify-center bg-main px-6 lg:px-8 py-2.5 lg:py-3 rounded-full text-secondary text-sm lg:text-base w-fit">
+                    Shop Now
+                  </button>
+                </div>
               </div>
             </section>
           </main>
