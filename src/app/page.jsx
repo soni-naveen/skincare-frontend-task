@@ -420,28 +420,84 @@ export default function page() {
             {/* Tab Section */}
             <section>
               <div className="flex justify-center mb-10">
-                <div className="text-3xl sm:text-4xl max-w-lg px-5 md:text-center text-secondary">
+                <div className="text-3xl sm:text-4xl max-w-lg px-5 sm:text-center text-secondary">
                   Feel Beautiful Inside and Out with Every Product.
                 </div>
               </div>
-              <div className="flex flex-wrap items-center gap-5 justify-center px-10">
-                <button className="flex items-center justify-center bg-secondary px-6 lg:px-8 py-2.5 lg:py-3 rounded-full text-main text-sm lg:text-base w-40 lg:w-52">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-5 place-items-center max-w-sm xs:max-w-md md:max-w-6xl mx-auto px-5 xs:px-10">
+                <button className="flex items-center justify-center bg-secondary px-6 lg:px-8 py-2.5 lg:py-3 rounded-full text-main text-xs xs:text-sm lg:text-base w-36 xs:w-40 lg:w-52">
                   NEW ARRIVAL
                 </button>
-                <button className="flex items-center justify-center bg-main px-6 lg:px-8 py-2.5 lg:py-3 rounded-full text-secondary border border-secondary text-sm lg:text-base w-40 lg:w-52">
+                <button className="flex items-center justify-center bg-main px-6 lg:px-8 py-2.5 lg:py-3 rounded-full text-secondary border border-secondary text-xs xs:text-sm lg:text-base w-36 xs:w-40 lg:w-52">
                   CLEANSING
                 </button>
-                <button className="flex items-center justify-center bg-main px-6 lg:px-8 py-2.5 lg:py-3 rounded-full text-secondary border border-secondary text-sm lg:text-base w-40 lg:w-52">
+                <button className="flex items-center justify-center bg-main px-6 lg:px-8 py-2.5 lg:py-3 rounded-full text-secondary border border-secondary text-xs xs:text-sm lg:text-base w-36 xs:w-40 lg:w-52">
                   ACNE FIGHTER
                 </button>
-                <button className="flex items-center justify-center bg-main px-6 lg:px-8 py-2.5 lg:py-3 rounded-full text-secondary border border-secondary text-sm lg:text-base w-40 lg:w-52">
+                <button className="flex items-center justify-center bg-main px-6 lg:px-8 py-2.5 lg:py-3 rounded-full text-secondary border border-secondary text-xs xs:text-sm lg:text-base w-36 xs:w-40 lg:w-52">
                   ANTI AGGING
                 </button>
               </div>
-              <div className="flex flex-wrap justify-center max-w-[1500px] mx-auto px-5 gap-5 py-10 sm:py-20">
+              <div className="hidden lg:flex justify-center max-w-[1500px] mx-auto px-5 gap-5 py-10 sm:py-20">
                 {items.slice(0, 3).map((item) => (
                   <ItemCard key={item.id} item={item} />
                 ))}
+              </div>
+              <div className="lg:hidden px-10 lg:px-5 py-16">
+                <Swiper
+                  onSwiper={(swiper) => {
+                    slideRef.current = swiper;
+                  }}
+                  className="max-w-[1350px] mx-auto"
+                  breakpoints={{
+                    640: {
+                      slidesPerView: 1,
+                      spaceBetween: 20,
+                    },
+                    768: {
+                      slidesPerView: 2,
+                      spaceBetween: 30,
+                    },
+                    1024: {
+                      slidesPerView: 3,
+                      spaceBetween: 25,
+                    },
+                    1280: {
+                      slidesPerView: 3,
+                      spaceBetween: 20,
+                    },
+                  }}
+                >
+                  {items.map((item) => {
+                    return (
+                      <SwiperSlide>
+                        <ItemCard key={item.id} item={item} swiper={true} />
+                      </SwiperSlide>
+                    );
+                  })}
+                </Swiper>
+              </div>
+              <div className="lg:hidden flex justify-center gap-10">
+                <button
+                  onClick={() => slideRef.current?.slidePrev()}
+                  className="cursor-pointer"
+                >
+                  <img
+                    src="/assets/leftarrow.svg"
+                    alt="left"
+                    className="w-12 h-12"
+                  />
+                </button>
+                <button
+                  onClick={() => slideRef.current?.slideNext()}
+                  className="cursor-pointer"
+                >
+                  <img
+                    src="/assets/rightarrow.svg"
+                    alt="right"
+                    className="w-12 h-12"
+                  />
+                </button>
               </div>
             </section>
             {/* FAQ Section  */}
