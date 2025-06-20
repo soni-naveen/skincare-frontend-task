@@ -10,6 +10,8 @@ import DotButton from "./components/DotButton";
 import ItemCard from "./components/ItemCard";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import { GoPlus } from "react-icons/go";
+import { HiOutlineMinus } from "react-icons/hi";
 
 export default function page() {
   const [loading, setLoading] = useState(false);
@@ -68,6 +70,39 @@ export default function page() {
       name: "RITUAL OF SAKURA",
       price: "27.99",
       img: "/assets/img3.jpg",
+    },
+  ];
+
+  const [openIndex, setOpenIndex] = useState(null);
+
+  const toggleFAQ = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
+  const FAQs = [
+    {
+      Question: "Are your products safe for sensitive skin?",
+      Answer:
+        "Yes! Our products are gentle, fragrance-free, and suitable for sensitive skin. We recommend a patch test before use.",
+    },
+    {
+      Question: "Are your products cruelty-free?",
+      Answer:
+        "Absolutely! All our products are cruelty-free, and most are vegan. Check individual product details for specifics.",
+    },
+    {
+      Question: "What’s your return policy?",
+      Answer:
+        "We offer a 30-day return policy on all items. Products must be unused and in their original packaging to qualify for a return.",
+    },
+    {
+      Question: "Do you ship internationally?",
+      Answer: "Yes, we offer international shipping to most countries.",
+    },
+    {
+      Question: "How do i choose the right product?",
+      Answer:
+        "You can choose the right product by exploring our product descriptions, usage guides, and customer reviews.",
     },
   ];
 
@@ -390,16 +425,16 @@ export default function page() {
                 </div>
               </div>
               <div className="flex flex-wrap items-center gap-5 justify-center px-10">
-                <button className="flex items-center justify-center bg-secondary px-6 lg:px-8 py-2.5 lg:py-3 rounded-full text-main text-sm lg:text-base w-40">
+                <button className="flex items-center justify-center bg-secondary px-6 lg:px-8 py-2.5 lg:py-3 rounded-full text-main text-sm lg:text-base w-40 lg:w-52">
                   NEW ARRIVAL
                 </button>
-                <button className="flex items-center justify-center bg-main px-6 lg:px-8 py-2.5 lg:py-3 rounded-full text-secondary border border-secondary text-sm lg:text-base w-40">
+                <button className="flex items-center justify-center bg-main px-6 lg:px-8 py-2.5 lg:py-3 rounded-full text-secondary border border-secondary text-sm lg:text-base w-40 lg:w-52">
                   CLEANSING
                 </button>
-                <button className="flex items-center justify-center bg-main px-6 lg:px-8 py-2.5 lg:py-3 rounded-full text-secondary border border-secondary text-sm lg:text-base w-40">
+                <button className="flex items-center justify-center bg-main px-6 lg:px-8 py-2.5 lg:py-3 rounded-full text-secondary border border-secondary text-sm lg:text-base w-40 lg:w-52">
                   ACNE FIGHTER
                 </button>
-                <button className="flex items-center justify-center bg-main px-6 lg:px-8 py-2.5 lg:py-3 rounded-full text-secondary border border-secondary text-sm lg:text-base w-40">
+                <button className="flex items-center justify-center bg-main px-6 lg:px-8 py-2.5 lg:py-3 rounded-full text-secondary border border-secondary text-sm lg:text-base w-40 lg:w-52">
                   ANTI AGGING
                 </button>
               </div>
@@ -407,6 +442,75 @@ export default function page() {
                 {items.slice(0, 3).map((item) => (
                   <ItemCard key={item.id} item={item} />
                 ))}
+              </div>
+            </section>
+            {/* FAQ Section  */}
+            <section>
+              <div className="pt-20 pb-10 lg:py-20 flex px-6 xl:px-0 justify-around w-full">
+                <div className="relative w-screen lg:w-[500px] xl:w-[600px] h-[700px]">
+                  <Image
+                    src="/assets/img5.jpg"
+                    alt="skincare"
+                    height={700}
+                    width={600}
+                    priority={true}
+                    className="w-screen lg:w-[500px] xl:w-[600px] h-[700px] lg:rounded-2xl object-cover"
+                  />
+                  <div className="absolute bottom-12 left-1/2 -translate-x-1/2">
+                    <DetailCard
+                      text={"24/7 We’re Here to Help You"}
+                      img={"/assets/headphones.svg"}
+                      svg={true}
+                    />
+                  </div>
+                </div>
+                <div>
+                  <div>
+                    <DotButton text={"Frequently Asked Question"} />
+                  </div>
+                  <p className="text-3xl sm:text-4xl pt-20">
+                    Answers to Your <br /> Skincare Questions, All <br />
+                    in One Place.
+                  </p>
+
+                  {/* FAQ Questions and answer */}
+                  <div className="mt-20 flex flex-col gap-3 text-secondary">
+                    {FAQs.map((item, index) => {
+                      return (
+                        <div
+                          key={index}
+                          className="border border-secondary px-6 py-3 w-full max-w-md xl:max-w-xl rounded-sm"
+                        >
+                          <div className="flex justify-between items-center">
+                            <p className="text-sm xl:text-base">{item.Question}</p>
+                            {openIndex === index ? (
+                              <HiOutlineMinus
+                                onClick={() => toggleFAQ(index)}
+                                size={30}
+                                className="cursor-pointer"
+                              />
+                            ) : (
+                              <GoPlus
+                                onClick={() => toggleFAQ(index)}
+                                size={30}
+                                className="cursor-pointer"
+                              />
+                            )}
+                          </div>
+                          <div
+                            className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                              openIndex !== index
+                                ? "max-h-0"
+                                : "mt-4 max-h-[200px]"
+                            }`}
+                          >
+                            <p>{item.Answer}</p>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
               </div>
             </section>
           </main>
