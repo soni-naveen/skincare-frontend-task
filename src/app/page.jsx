@@ -445,7 +445,7 @@ export default function page() {
               </div>
             </section>
             {/* FAQ Section  */}
-            <section className="pt-20 pb-10 lg:py-20 flex flex-col-reverse gap-10 lg:gap-0 lg:flex-row lg:px-6 xl:px-0 justify-around w-full">
+            <section className="pt-20 pb-10 lg:py-20 flex items-center flex-col-reverse gap-10 lg:gap-0 lg:flex-row lg:px-6 xl:px-0 justify-around w-full">
               <div className="relative w-screen lg:w-[500px] xl:w-[600px] h-[700px]">
                 <Image
                   src="/assets/img5.jpg"
@@ -467,7 +467,7 @@ export default function page() {
                 <div>
                   <DotButton text={"Frequently Asked Question"} />
                 </div>
-                <p className="text-3xl sm:text-4xl pt-10 lg:pt-20 max-w-md">
+                <p className="text-3xl sm:text-4xl pt-10 lg:pt-16 max-w-md">
                   Answers to Your Skincare Questions, All in One Place.
                 </p>
 
