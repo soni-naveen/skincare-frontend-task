@@ -19,7 +19,7 @@ export default function page() {
 
   // Loader
   useEffect(() => {
-    // setLoading(true);
+    setLoading(true);
     setTimeout(() => {
       setLoading(false);
     }, 2500);
@@ -445,71 +445,70 @@ export default function page() {
               </div>
             </section>
             {/* FAQ Section  */}
-            <section>
-              <div className="pt-20 pb-10 lg:py-20 flex px-6 xl:px-0 justify-around w-full">
-                <div className="relative w-screen lg:w-[500px] xl:w-[600px] h-[700px]">
-                  <Image
-                    src="/assets/img5.jpg"
-                    alt="skincare"
-                    height={700}
-                    width={600}
-                    priority={true}
-                    className="w-screen lg:w-[500px] xl:w-[600px] h-[700px] lg:rounded-2xl object-cover"
+            <section className="pt-20 pb-10 lg:py-20 flex flex-col-reverse gap-10 lg:gap-0 lg:flex-row lg:px-6 xl:px-0 justify-around w-full">
+              <div className="relative w-screen lg:w-[500px] xl:w-[600px] h-[700px]">
+                <Image
+                  src="/assets/img5.jpg"
+                  alt="skincare"
+                  height={700}
+                  width={600}
+                  priority={true}
+                  className="w-screen lg:w-[500px] xl:w-[600px] h-[700px] lg:rounded-2xl object-cover"
+                />
+                <div className="absolute bottom-12 left-1/2 -translate-x-1/2">
+                  <DetailCard
+                    text={"24/7 We’re Here to Help You"}
+                    img={"/assets/headphones.svg"}
+                    svg={true}
                   />
-                  <div className="absolute bottom-12 left-1/2 -translate-x-1/2">
-                    <DetailCard
-                      text={"24/7 We’re Here to Help You"}
-                      img={"/assets/headphones.svg"}
-                      svg={true}
-                    />
-                  </div>
                 </div>
+              </div>
+              <div className="px-5 sm:px-10 lg:px-0">
                 <div>
-                  <div>
-                    <DotButton text={"Frequently Asked Question"} />
-                  </div>
-                  <p className="text-3xl sm:text-4xl pt-20">
-                    Answers to Your <br /> Skincare Questions, All <br />
-                    in One Place.
-                  </p>
+                  <DotButton text={"Frequently Asked Question"} />
+                </div>
+                <p className="text-3xl sm:text-4xl pt-10 lg:pt-20 max-w-md">
+                  Answers to Your Skincare Questions, All in One Place.
+                </p>
 
-                  {/* FAQ Questions and answer */}
-                  <div className="mt-20 flex flex-col gap-3 text-secondary">
-                    {FAQs.map((item, index) => {
-                      return (
-                        <div
-                          key={index}
-                          className="border border-secondary px-6 py-3 w-full max-w-md xl:max-w-xl rounded-sm"
-                        >
-                          <div className="flex justify-between items-center">
-                            <p className="text-sm xl:text-base">{item.Question}</p>
-                            {openIndex === index ? (
-                              <HiOutlineMinus
-                                onClick={() => toggleFAQ(index)}
-                                size={30}
-                                className="cursor-pointer"
-                              />
-                            ) : (
-                              <GoPlus
-                                onClick={() => toggleFAQ(index)}
-                                size={30}
-                                className="cursor-pointer"
-                              />
-                            )}
-                          </div>
-                          <div
-                            className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                              openIndex !== index
-                                ? "max-h-0"
-                                : "mt-4 max-h-[200px]"
-                            }`}
-                          >
-                            <p>{item.Answer}</p>
-                          </div>
+                {/* FAQ Questions and answer */}
+                <div className="mt-10 lg:mt-20 flex flex-col gap-3 text-secondary">
+                  {FAQs.map((item, index) => {
+                    return (
+                      <div
+                        key={index}
+                        className="border border-secondary px-4 sm:px-6 py-3 w-full w-[90%] lg:max-w-md xl:max-w-xl rounded-sm"
+                      >
+                        <div className="flex justify-between items-center">
+                          <p className="text-sm xl:text-base">
+                            {item.Question}
+                          </p>
+                          {openIndex === index ? (
+                            <HiOutlineMinus
+                              onClick={() => toggleFAQ(index)}
+                              size={30}
+                              className="cursor-pointer"
+                            />
+                          ) : (
+                            <GoPlus
+                              onClick={() => toggleFAQ(index)}
+                              size={30}
+                              className="cursor-pointer"
+                            />
+                          )}
                         </div>
-                      );
-                    })}
-                  </div>
+                        <div
+                          className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                            openIndex !== index
+                              ? "max-h-0"
+                              : "mt-4 max-h-[200px]"
+                          }`}
+                        >
+                          <p>{item.Answer}</p>
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             </section>
