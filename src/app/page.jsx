@@ -338,7 +338,7 @@ export default function page() {
                   </button>
                 </div>
               </div>
-              <div className="px-10 lg:px-5 py-16">
+              <div className="px-5 sm:px-10 lg:px-5 py-16">
                 <Swiper
                   onSwiper={(swiper) => {
                     slideRef1.current = swiper;
@@ -444,7 +444,7 @@ export default function page() {
                   <ItemCard key={item.id} item={item} />
                 ))}
               </div>
-              <div className="lg:hidden px-10 lg:px-5 py-16">
+              <div className="lg:hidden px-5 sm:px-10 lg:px-5 py-16">
                 <Swiper
                   onSwiper={(swiper) => {
                     slideRef2.current = swiper;
@@ -536,22 +536,20 @@ export default function page() {
                         key={index}
                         className="border border-secondary px-4 sm:px-6 py-3 w-full w-[90%] lg:max-w-md xl:max-w-xl rounded-sm"
                       >
-                        <div className="flex justify-between items-center">
+                        <div
+                          onClick={() => toggleFAQ(index)}
+                          className="flex justify-between items-center cursor-pointer"
+                        >
                           <p className="text-sm xl:text-base">
                             {item.Question}
                           </p>
                           {openIndex === index ? (
                             <HiOutlineMinus
-                              onClick={() => toggleFAQ(index)}
                               size={30}
                               className="cursor-pointer"
                             />
                           ) : (
-                            <GoPlus
-                              onClick={() => toggleFAQ(index)}
-                              size={30}
-                              className="cursor-pointer"
-                            />
+                            <GoPlus size={30} className="cursor-pointer" />
                           )}
                         </div>
                         <div

@@ -10,7 +10,7 @@ export default function ItemCard({ item, swiper }) {
         height={600}
         width={600}
         priority={true}
-        className="w-[320px] xs:w-[350px] sm:w-[420px] h-[500px] sm:h-[550px] rounded-2xl object-cover"
+        className="w-[370px] sm:w-[420px] h-[500px] sm:h-[550px] rounded-2xl object-cover"
       />
       <div className="absolute bottom-4 w-[95%] left-1/2 -translate-x-1/2 flex justify-between items-center bg-main p-2 rounded-lg">
         <div className="flex flex-col gap-4 ml-2">
