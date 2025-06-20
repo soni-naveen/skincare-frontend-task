@@ -1,9 +1,9 @@
 import React from "react";
 import Image from "next/image";
 
-export default function ItemCard({ item }) {
+export default function ItemCard({ item, swiper }) {
   return (
-    <div className="w-fit relative mx-auto">
+    <div className={`w-fit relative ${swiper ? "mx-auto" : ""}`}>
       <Image
         src={item.img}
         alt={item.name}

@@ -276,7 +276,7 @@ export default function page() {
                 <div>
                   <DotButton text={"Best Selling Products"} />
                 </div>
-                <div className="text-3xl sm:text-4xl max-w-md lg:text-center">
+                <div className="text-3xl text-secondary sm:text-4xl max-w-md lg:text-center">
                   Skincare That Brings Out Your Natural Radiance
                 </div>
                 <div className="hidden lg:flex gap-12">
@@ -330,7 +330,7 @@ export default function page() {
                   {items.map((item) => {
                     return (
                       <SwiperSlide>
-                        <ItemCard key={item.id} item={item} />
+                        <ItemCard key={item.id} item={item} swiper={true} />
                       </SwiperSlide>
                     );
                   })}
@@ -380,6 +380,33 @@ export default function page() {
                     Shop Now
                   </button>
                 </div>
+              </div>
+            </section>
+            {/* Tab Section */}
+            <section>
+              <div className="flex justify-center mb-10">
+                <div className="text-3xl sm:text-4xl max-w-lg px-5 md:text-center text-secondary">
+                  Feel Beautiful Inside and Out with Every Product.
+                </div>
+              </div>
+              <div className="flex flex-wrap items-center gap-5 justify-center px-10">
+                <button className="flex items-center justify-center bg-secondary px-6 lg:px-8 py-2.5 lg:py-3 rounded-full text-main text-sm lg:text-base w-40">
+                  NEW ARRIVAL
+                </button>
+                <button className="flex items-center justify-center bg-main px-6 lg:px-8 py-2.5 lg:py-3 rounded-full text-secondary border border-secondary text-sm lg:text-base w-40">
+                  CLEANSING
+                </button>
+                <button className="flex items-center justify-center bg-main px-6 lg:px-8 py-2.5 lg:py-3 rounded-full text-secondary border border-secondary text-sm lg:text-base w-40">
+                  ACNE FIGHTER
+                </button>
+                <button className="flex items-center justify-center bg-main px-6 lg:px-8 py-2.5 lg:py-3 rounded-full text-secondary border border-secondary text-sm lg:text-base w-40">
+                  ANTI AGGING
+                </button>
+              </div>
+              <div className="flex flex-wrap justify-center max-w-[1500px] mx-auto px-5 gap-5 py-10 sm:py-20">
+                {items.slice(0, 3).map((item) => (
+                  <ItemCard key={item.id} item={item} />
+                ))}
               </div>
             </section>
           </main>
